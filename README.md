@@ -4,7 +4,7 @@
 
 ### ***Steps to Follow***
 
-1.	Install [VS Code](https://code.visualstudio.com/download)
+1.	Install [VS Code](https://code.visualstudio.com/download) (optional)
 2.	Install [Node.js](https://nodejs.org/en/download/)
 3.	Create a project folder
 4.	Open the folder in VS Code
@@ -94,7 +94,7 @@ or
 
 
 
-or use posttest to delete logs and test output after every test run
+or use posttest to delete logs and test output after `npm run test`
 
 ```
 "scripts": {
