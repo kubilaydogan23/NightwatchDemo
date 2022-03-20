@@ -15,8 +15,15 @@ module.exports = {
       launch_url: "https://ukg.com",
       desiredCapabilities: {
         browserName: 'chrome'
-      }
+      },
+      screenshots : {
+        enabled : true,
+        on_failure : true,
+        on_error : false,
+        path : "screenshots"
+      },
     },
+    
 
     local: {
       desiredCapabilities: {

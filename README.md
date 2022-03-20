@@ -82,7 +82,7 @@ or
 
 ## **Notes**
 
-### *Deleting Logs & Reports* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### *Deleting Logs & Reports* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > `npm install rimraf`
 ```
 "scripts": {
@@ -92,20 +92,11 @@ or
 ```
 > `npm run clean` to delete **logs** and **tests_output** folders
 
+<br/>
 
+### *package.json* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-or use posttest to delete logs and test output after `npm run test`
-
-```
-"scripts": {
-    "test": "nightwatch",
-    "posttest": "rimraf dist logs tests_output",
-    "clean": "rimraf dist logs tests_output"
-  }
-```
-
-### *package.json* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
+* Run `npm outdated` command to see if any installed packages are outdated or not. 
+  > If you don't see any output in console, it means the packages are not outdated
 * When you make changes in this file, you must run npm install command
 * 
