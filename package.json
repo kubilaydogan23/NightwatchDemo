@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nightwatch",
-    "posttest": "rimraf dist logs tests_output",
-    "clean": "rimraf dist logs tests_output"
+    "clean": "rimraf dist logs screenshots tests_output"
   },
   "keywords": [],
   "author": "",

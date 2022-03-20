@@ -40,6 +40,20 @@ module.exports = {
         browser.end();
     },
 
+    'Testing by using launch url': function (browser) {
+
+        let contactPage = browser.page.contactPage();
+        
+        browser.url(browser.launch_url + '/contact');
+
+        contactPage
+            .waitForElementVisible("@pageHeader", 5000)
+            .expect.element("@pageHeader")
+            .text.to.equal("Contact UKG");
+
+        browser.end();
+    },
+
     'Demo Test': function (browser) {
         var searchField = '#edit-keys';
         

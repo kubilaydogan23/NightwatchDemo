@@ -1,4 +1,4 @@
-# Nightwatch.js Framework
+# Creating a Nightwatch.js Framework
 
 ## **Installing and Configuring Nightwatch**
 
