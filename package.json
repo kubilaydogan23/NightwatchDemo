@@ -1,0 +1,19 @@
+{
+  "name": "nightwatchdemo",
+  "version": "1.0.0",
+  "description": "Demo project for Nightwatch.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "nightwatch",
+    "posttest": "rimraf dist logs tests_output",
+    "clean": "rimraf dist logs tests_output"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^99.0.0",
+    "nightwatch": "*",
+    "rimraf": "^3.0.2"
+  }
+}

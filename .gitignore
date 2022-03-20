@@ -1,0 +1,9 @@
+node_modules
+
+tests_output
+reports
+screenshots
+
+# Logs
+logs
+*.log
