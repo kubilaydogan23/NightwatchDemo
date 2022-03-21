@@ -103,4 +103,24 @@ or
 * Run `npm outdated` command to see if any installed packages are outdated or not. 
   > If you don't see any output in console, it means the packages are not outdated
 * When you make changes in this file, you must run npm install command
-* 
+
+
+### *nightwatch.conf.js* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* You can add `launch_url` to config file:
+    ```
+    "test_settings" : {
+        "default" : {
+            launch_url: "https://sample.com",
+    ```
+
+    this will allow you to use in your tests:
+    ```
+    module.exports = {
+        'Valid login' : function(browser) {
+            //Visit url from launch_url on nightwatch.conf.js
+            browser.url(browser.launch_url)
+            browser.url(browser.launch_url + '/contact');
+            ...
+    ```
+
