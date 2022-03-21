@@ -38,41 +38,6 @@ module.exports = {
             .text.to.equal("Contact UKG");
 
         browser.end();
-    },
-
-    'Testing by using launch url': function (browser) {
-
-        let contactPage = browser.page.contactPage();
-        
-        browser.url(browser.launch_url + '/contact');
-
-        contactPage
-            .waitForElementVisible("@pageHeader", 5000)
-            .expect.element("@pageHeader")
-            .text.to.equal("Contact UKG");
-
-        browser.end();
-    },
-
-    'Demo Test': function (browser) {
-        var searchField = '#edit-keys';
-        
-        browser
-            .url('https://www.ukg.com')
-
-            .getTitle((title) => console.log("Title: " + title))        // Title: HR and workforce management solutions | UKG
-            
-            .getText('.menu-level-1:first-child', (resultText) => {
-                console.log(resultText.value);                          // Contact
-            })
-            .setValue(searchField, 'Testing')
-            
-            .getValue(searchField, (resultValue) => {
-                console.log(resultValue.value);                         // Testing
-            })
-            .isVisible(searchField, (result) => {
-                console.log("Is Search field visible? " + result.value);                              // true
-            })
-    },
-
+    }
+    
 }

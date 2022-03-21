@@ -8,12 +8,12 @@
 2.	Install [Node.js](https://nodejs.org/en/download/)
 3.	Create a project folder
 4.	Open the folder in VS Code
-5.	Open terminal and enter: 
+5.	Open the Terminal in VS Code and enter: 
     ```
     npm init -y
     ```
 
-    💡 This command will create our project with a default **`package.json`** file
+    💡 This command will create/initialize our project with a default **`package.json`** file
 
 
 6.	Install Nightwatch and ChromeDriver  
@@ -52,16 +52,20 @@
 9.  Create 3 folders: `tests`, `pages` and `globals` 
 
 10. Create `.gitignore` file and enter:
+
     ```
-    node_modules
+    # Dependency directories
+    node_modules/
 
-    tests_output
-    reports
-    screenshots
+    # idea
+    .idea/
 
-    # Logs
-    logs
-    *.log
+    # Test Output
+    tests_output/
+    reports/
+    screenshots/
+    logs/
+    chromedriver.log
     ```
 
 <br/>
