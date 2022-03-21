@@ -1,8 +1,6 @@
 module.exports = {
 
-    url: function () {
-        return `${this.api.launch_url}/default.aspx`
-    },
+    url: "https://www.ukg.com/contact",
 
     elements: {
         pageHeader: {

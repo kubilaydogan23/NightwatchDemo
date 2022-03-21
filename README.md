@@ -104,23 +104,51 @@ or
   > If you don't see any output in console, it means the packages are not outdated
 * When you make changes in this file, you must run npm install command
 
+<br/>
 
 ### *nightwatch.conf.js* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* You can add `launch_url` to config file:
+* You can add `launch_url` to your config file:
     ```
     "test_settings" : {
         "default" : {
             launch_url: "https://sample.com",
     ```
 
-    this will allow you to use in your tests:
+    This will allow you to navigate to the url directly in your tests:
+   
     ```
     module.exports = {
         'Valid login' : function(browser) {
-            //Visit url from launch_url on nightwatch.conf.js
             browser.url(browser.launch_url)
             browser.url(browser.launch_url + '/contact');
             ...
     ```
+
+    But you can also specify `url` in page classes
+    ```
+    module.exports = {
+    url: 'https://www.ukg.com/',
+    
+    elements: {
+        ...
+    }
+    };
+    ```
+    Sample of usage:
+    ```
+    let homePage = browser.page.homePage();
+    homePage.navigate()
+    ```
+
+    Another option is to use this code in page classes:
+
+    ```
+    url: function () {
+        return `${this.api.launch_url}/default.aspx`
+    },
+    ```
+
+    This will allow you to write `homePage.navigate()` instead of `browser.url(browser.launch_url)`
+
 

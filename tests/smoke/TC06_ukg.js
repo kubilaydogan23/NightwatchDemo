@@ -25,8 +25,8 @@ module.exports = {
 
     'Testing by using page objects': function (browser) {
 
-        let homePage = browser.page.homePage();
-        let contactPage = browser.page.contactPage();
+        let homePage = browser.page.ukg_homePage();
+        let contactPage = browser.page.ukg_contactPage();
         
         homePage
             .navigate()

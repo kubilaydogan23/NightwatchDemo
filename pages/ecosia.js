@@ -1,7 +1,10 @@
 
 module.exports = {
     // commands: [ecosiaCommands],
-    url: 'https://www.ecosia.org',
+    url: function () {
+        return `${this.api.launch_url}/default.aspx`
+    },
+    
     elements: {
 
         logo: 'section .logo__icon',
