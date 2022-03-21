@@ -1,5 +1,5 @@
 module.exports = {
-    // commands: [googleCommands],
+    
     url: 'https://google.com',
     elements: {
         searchBar: {
@@ -11,9 +11,5 @@ module.exports = {
             index: 1
         },
 
-        // submit: {
-        //     selector: '//[@name="q"]',
-        //     locateStrategy: 'xpath'
-        // },
     }
 }
