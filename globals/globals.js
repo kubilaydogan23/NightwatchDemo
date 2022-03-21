@@ -1,11 +1,11 @@
 module.exports = {
     before: function (browser, done) {
-        console.log('Test suite execution started')
+        console.log('Setting up...')
         done();
     },
 
     after: function (done) {
-        // ...
+        console.log('Closing down...')
         done();
     },
 

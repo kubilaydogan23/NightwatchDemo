@@ -1,18 +1,23 @@
-module.exports = {
+// To run only the group:
+// nightwatch --group bdd
 
-    "@tags": ["ecosia"],
 
-    beforeEach: () => {
-        console.log("Test started")
-        browser.navigateTo('https://www.ecosia.org/')
-    },
+describe('Test suite using describe interface', function () {
+    this.tags = ["ecosia5"];
 
-    afterEach: function () {
+    // before(browser => browser.navigateTo('https://www.ecosia.org/'));
+    // after(browser => browser.end());
+
+    beforeEach( browser => {
+        browser.navigateTo('https://www.ecosia.org/');
+    }),
+
+    afterEach( browser => {
         browser.end();
-        console.log("Test completed")
-    },
+    }),
+        
 
-    'Demo test for search functionality': function (browser) {
+    test('ecosia.org', function (browser) {
         browser
             .waitForElementVisible('section .logo__icon')
             .assert.titleContains('Ecosia')
@@ -23,15 +28,8 @@ module.exports = {
             .click('button[type=submit]')
             .waitForElementVisible('.mainline', 15000)
             .assert.textContains('.mainline', 'Nightwatch.js');
-    
-    }
+        
+        browser.saveScreenshot('./screenshots/ecosia.png');
+    })
 
-}
-
-  // To run test: 
-  //    npx nightwatch test/ecosia01.js
-  //    npx nightwatch --tag ecosia
-  //    npm test --tag ecosia
-
-  //   nightwatch --tag ecosia
-
+});

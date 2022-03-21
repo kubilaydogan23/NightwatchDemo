@@ -12,7 +12,7 @@ module.exports = {
 
   test_settings: {
     default: {
-      launch_url: "https://ukg.com",
+      launch_url: "https://www.ecosia.org",
       desiredCapabilities: {
         browserName: 'chrome'
       },
@@ -22,13 +22,7 @@ module.exports = {
         on_error : false,
         path : "screenshots"
       },
-    },
-    
-
-    local: {
-      desiredCapabilities: {
-        browserName: 'chrome'
-      }
-    },
+    }
+  
   }
 };

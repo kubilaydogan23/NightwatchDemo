@@ -15,7 +15,7 @@ module.exports = {
         browser.end();
     },
 
-    'Testing by using launch url': function (browser) {
+    'Can navigate to Contact Page': function (browser) {
 
         let contactPage = browser.page.contactPage();
         
