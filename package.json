@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "nightwatch",
+    "single": "nightwatch --tag ecosia",
+    "pretest": "rimraf dist logs screenshots tests_output",
     "clean": "rimraf dist logs screenshots tests_output"
   },
-  "keywords": [],
+  "keywords": ["nightwatch", "test", "smoke"],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chromedriver": "^99.0.0",
     "nightwatch": "*",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "dotenv": "^16.0.0"
   }
 }

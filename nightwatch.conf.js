@@ -2,6 +2,7 @@ module.exports = {
   src_folders: ["tests"],
   page_objects_path: ['pages'],
   globals_path: "globals/globals.js",
+  custom_commands_path : "./custom_commands",
   // output_folder : "reports",    
 
   webdriver: {
@@ -13,6 +14,10 @@ module.exports = {
   test_settings: {
     default: {
       launch_url: "https://www.ecosia.org",
+      "globals" : {
+        "username" : "wardenj",
+        "password" : "password"
+      },
       desiredCapabilities: {
         browserName: 'chrome'
       },

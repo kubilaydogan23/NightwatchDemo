@@ -1,5 +1,7 @@
 # Creating a Nightwatch.js Framework
 
+Nightwatch is an end-to-end testing framework based on Node.js that uses the W3C Webdriver API to simulate user actions in a web application.
+
 ## **Installing and Configuring Nightwatch**
 
 ### ***Steps to Follow***
@@ -70,6 +72,35 @@
 
 <br/>
 
+## **Page Objects**
+The following is an example page object:
+```
+module.exports = {
+    url: function () {
+        return `${this.api.launch_url}/default.aspx`
+    },
+    elements: {
+        findBy: "#GridView1_firstSelect_0",
+        inputTextBox: "#GridView1_TextEntryFilterControlInputBox_0",
+        searchButton: "#GridView1_filterButton",
+        pageHeader:"#ctl00_lblPageHeader",
+    },
+    sections: {
+        ticd: {
+            selector: "#containerRight",
+            elements: {
+                hireRehireEmployeeLink: "#wizard_329",
+                addUSCAInternationalEmployeeLink: "#wizard_3011"
+            }
+        }
+    }
+}
+
+```
+> Check `sample.js` under pages folder
+
+<br/>
+
 ## **Testing**
 To run a single test: 
 * `npx nightwatch folder-name/file-name.js`
@@ -80,34 +111,43 @@ or
 * `nightwatch --tag tag-name`
 * `nightwatch folder-name/file-name.js`
 
-    > 💡 This command works if you install nightwatch globally: <br/>
+    > 💡 This command works if you install nightwatch globally (preferred):<br/>
     >    `npm install nightwatch -g`
 
+<br/><br/>
 
-## **Notes**
+# **Notes**
 
-### *Deleting Logs & Reports* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> `npm install rimraf`
-```
+# *package.json*
+
+### **scripts**
+* Scripts can be executed by running `npm run`
+```json
+Example:
 "scripts": {
     "test": "nightwatch",
-    "clean": "rimraf dist logs tests_output"
-  }
+    "single": "nightwatch --tag ecosia",
+  },
 ```
-> `npm run clean` to delete **logs** and **tests_output** folders
+* `npm run test` will execute all tests under test folder<br/>
+`npm run single` will execute execute the test(s) you define<br/>
+
 
 <br/>
-
-### *package.json* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+### **packages/dependencies**
 * Run `npm outdated` command to see if any installed packages are outdated or not. 
   > If you don't see any output in console, it means the packages are not outdated
 * When you make changes in this file, you must run npm install command
 
 <br/>
+### **keywords**
+The keywords field is where you can describe your project using related keywords.<br/>
+An example: `"keywords": ["nightwatch", "test", "smoke"],`
+<br/>
+<br/>
 
-### *nightwatch.conf.js* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+# *nightwatch.conf.js*
+### **Launch URL**
 * You can add `launch_url` to your config file:
     ```
     "test_settings" : {
@@ -150,5 +190,36 @@ or
     ```
 
     This will allow you to write `homePage.navigate()` instead of `browser.url(browser.launch_url)`
+
+<br/>
+
+### **Environment Variables**
+Environment variables allowing your tests to behave differently based on the environment you want them to run in.
+```json
+test_settings: {
+    default: {
+      launch_url: "https://www.saucedemo.com/",
+      "globals" : {
+        "username" : "standard_user",
+        "password" : "secret_sauce"
+      },
+    ...
+```
+<br/>
+
+### **Deleting Logs & Reports**
+> `npm install rimraf`
+```
+"scripts": {
+    "test": "nightwatch",
+    "clean": "rimraf dist logs tests_output"
+  }
+```
+> `npm run clean` to delete **logs** and **tests_output** folders
+
+<br/>
+
+
+
 
 

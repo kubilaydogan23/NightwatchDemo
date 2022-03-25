@@ -1,6 +1,3 @@
-// To run only the group:
-// nightwatch --group bdd
-
 
 describe('Test suite using describe interface', function () {
     this.tags = ["ecosia5"];
