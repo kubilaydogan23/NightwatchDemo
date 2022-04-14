@@ -213,6 +213,29 @@ test_settings: {
 Sample of usage:
 > login(`browser.globals.`username, `browser.globals.`password)
 
+<br/>
+
+### **Using Test Environments**
+You can define multiple environments under test settings. 
+A "`default`" environment is required. All the other environments are inheriting the base settings defined under the default environment and they can overwrite settings as needed.
+```
+  "test_settings" : {
+    "default" : {
+        "launch_url" : "http://localhost",
+        "globals" : {
+            "variable1" : "some value",
+            "variable2" : "some other value"
+        }
+    },
+
+    "integration" : {
+      "launch_url" : "http://staging.host",
+    }
+  }
+```
+**To run tests in a different environment:**
+> nightwatch `--env` integration
+
 <br/><br/>
 
 # Optional / Additional Features
