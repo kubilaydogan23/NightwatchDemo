@@ -233,8 +233,8 @@ A "`default`" environment is required. All the other environments are inheriting
     }
   }
 ```
-**To run tests in a different environment:**
-> nightwatch `--env` integration
+**To run tests in a different environment, use `--env` option**
+> nightwatch --env integration
 
 <br/><br/>
 
