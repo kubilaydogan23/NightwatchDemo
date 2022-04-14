@@ -6,11 +6,11 @@ node_modules/
 
 # Test Output
 tests_output/
-reports/
+allure-report/
+allure-results/
 screenshots/
 logs/
 *.log
-
 
 
 package-lock.json

@@ -25,7 +25,7 @@ Nightwatch is an end-to-end testing framework based on Node.js that uses the W3C
 7.	Create a file and name it as **`nightwatch.conf.js`**
 8.  Enter the following code to nightwatch.conf.js
 
-    ```java
+    ```t
     module.exports = {
         src_folders: ["tests"],
         page_objects_path: ['pages'],
@@ -34,7 +34,11 @@ Nightwatch is an end-to-end testing framework based on Node.js that uses the W3C
         webdriver: {
             start_process: true,
             server_path: 'node_modules/.bin/chromedriver',
-            port: 9515
+            port: 9515,
+            ssl: false,
+            default_path_prefix: '',
+            proxy: undefined,
+            cli_args: {}
         },
 
         test_settings: {
@@ -47,15 +51,13 @@ Nightwatch is an end-to-end testing framework based on Node.js that uses the W3C
     };
     ```
 
-    💡 `start_process: true` will allow Nightwatch to start the ChromeDriver instance automatically when we run a test.
-
     > Instead of following Step 7-8, you can run **"npx nightwatch"** to get an auto-generated configuration file. 
 
-9.  Create 3 folders: `tests`, `pages` and `globals` 
+9.  Create 3 folders: `tests`, `pages` and `globals` and `globals.js` file under globals folder
 
 10. Create `.gitignore` file and enter:
 
-    ```
+    ```t
     # Dependency directories
     node_modules/
 
@@ -64,17 +66,18 @@ Nightwatch is an end-to-end testing framework based on Node.js that uses the W3C
 
     # Test Output
     tests_output/
-    reports/
+    allure-report/
+    allure-results/
     screenshots/
     logs/
-    chromedriver.log
+    *.log
     ```
 
 <br/>
 
 ## **Page Objects**
 The following is an example page object:
-```
+```t
 module.exports = {
     url: function () {
         return `${this.api.launch_url}/default.aspx`
@@ -205,13 +208,80 @@ test_settings: {
       },
     ...
 ```
+
+
 <br/>
 
-### **Deleting Logs & Reports**
-> `npm install rimraf`
+# Optional / Additional Features
+
+### 🧿 **`Allure Report`** 🧿
+
+➡️  npm install nightwatch-allure
+
+➡️ npm install -g allure-commandline
+
+➡️  Add following code to globals file in nightwatch
+```js
+const allureReporter = require('nightwatch-allure');
+module.exports = {
+  reporter: (results,done)=>{
+    const reporter = new allureReporter.NightwatchAllureReporter({});
+    reporter.write(results,done);
+  }
+};
+```
+➡️  Create a new script in package.json file
 ```
 "scripts": {
-    "test": "nightwatch",
+    ...
+    "generateReport": "allure generate ./allure-results --clean && allure open",
+    ...
+  },
+```
+➡️  After test execution, enter `npm run generateReport`
+
+</br>
+
+### 🧿 **`Nightwatch HTML Reporter`** 🧿
+
+➡️  npm install nightwatch-html-reporter
+
+➡️  npm install -g nightwatch-html-reporter
+
+➡️  Create a new file: `html-reporter.js` and add the following code
+```
+var HtmlReporter = require('nightwatch-html-reporter');
+
+var reporter = new HtmlReporter({
+    openBrowser: true,
+    reportsDirectory: __dirname + '/html-reports',
+    // available themes: default / cover / compact / default-gray / compact-gray
+    themeName: 'cover',
+});
+
+module.exports = {
+    write: function (results, options, done) {
+        reporter.fn(results, done);
+    }
+};
+```
+➡️  Create a new folder: `html-reports`
+
+➡️  Use `--reporter` option while running tests:  
+> nightwatch --tag tagName `--reporter html-reporter.js`
+
+➡️  Enter `Ctrl+C` in console after the HTML report is generated.
+
+<br/>
+
+### 🧿 **`Deleting Logs & Reports`** 🧿
+
+➡️  npm  install rimraf
+
+➡️  Create a new script in package.json file
+```
+"scripts": {
+    ...
     "clean": "rimraf dist logs tests_output"
   }
 ```
@@ -219,7 +289,19 @@ test_settings: {
 
 <br/>
 
+### 🧿 **`dotenv`** 🧿
 
+Dotenv is a module that loads environment variables from a .env file.
 
+➡️  npm  install dotenv
 
+➡️  Create a .env file in the root of your project
+```
+(sample)
+BASE_URL            = https://www.baseurl.com/
+USERNAME            = standard_user
+PASSWORD            = secret
+```
 
+Sample of usage:
+> login(`process.env.`USERNAME, `process.env.`PASSWORD)

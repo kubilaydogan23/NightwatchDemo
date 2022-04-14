@@ -1,6 +1,6 @@
 module.exports = {
 
-    "@tags": ["ecosia"],
+    "@tags": ["ecosiaz"],
 
     'Demo test for search functionality': function (browser) {
 
@@ -13,7 +13,7 @@ module.exports = {
             .assert.visible('button[type=submit]')
             .click('button[type=submit]')
             .waitForElementVisible('.mainline', 15000)
-            .assert.textContains('.mainline', 'Nightwatch.js');
+            .assert.textContains('.mainline', 'Nightwatch');
 
         browser.end();
 

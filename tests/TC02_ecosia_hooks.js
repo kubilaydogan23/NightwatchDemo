@@ -1,7 +1,7 @@
 // nightwatch --tag hooks
 
 module.exports = {
-    "@tags": ["ecosia2"],
+    "@tags": ["ecosia"],
 
     beforeEach: () => {
         browser.url(browser.launch_url)

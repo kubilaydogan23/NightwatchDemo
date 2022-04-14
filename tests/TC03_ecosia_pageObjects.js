@@ -2,10 +2,10 @@
 
 module.exports = {
 
-    "@tags": ["ecosia3"],
+    "@tags": ["ecosia"],
 
     'Demo test for search functionality': function (browser) {
-        // var ecosia = browser.page.ecosia();
+        var ecosia = browser.page.ecosia();
 
         ecosia.navigate()
             .waitForElementVisible('@logo')
