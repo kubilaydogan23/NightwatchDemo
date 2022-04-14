@@ -200,7 +200,7 @@ An example: `"keywords": ["nightwatch", "test", "smoke"],`
 
 ### **Environment Variables**
 Environment variables allowing your tests to behave differently based on the environment you want them to run in.
-```json
+```js
 test_settings: {
     default: {
       launch_url: "https://www.saucedemo.com/",
