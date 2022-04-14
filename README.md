@@ -11,19 +11,19 @@ Nightwatch is an end-to-end testing framework based on Node.js that uses the W3C
 3.	Create a project folder
 4.	Open the folder in VS Code
 5.	Open the Terminal in VS Code and enter: 
-    ```
-    npm init -y
-    ```
+    > npm init -y
 
     💡 This command will create/initialize our project with a default **`package.json`** file
 
 
 6.	Install Nightwatch and ChromeDriver  
-    ```
-    npm install nightwatch chromedriver
-    ```
-7.	Create a file and name it as **`nightwatch.conf.js`**
-8.  Enter the following code to nightwatch.conf.js
+    > npm install nightwatch chromedriver
+
+7.  Install Nightwatch globally
+    > npm install -g nightwatch
+
+8.  Create a file and name it as **`nightwatch.conf.js`**
+9.  Enter the following code to nightwatch.conf.js
 
     ```t
     module.exports = {
@@ -53,9 +53,9 @@ Nightwatch is an end-to-end testing framework based on Node.js that uses the W3C
 
     > Instead of following Step 7-8, you can run **"npx nightwatch"** to get an auto-generated configuration file. 
 
-9.  Create 3 folders: `tests`, `pages` and `globals` and `globals.js` file under globals folder
+10.  Create `tests` and `pages` folders and a `globals/globals.js` file
 
-10. Create `.gitignore` file and enter:
+11. Create `.gitignore` file and enter:
 
     ```t
     # Dependency directories
@@ -71,31 +71,31 @@ Nightwatch is an end-to-end testing framework based on Node.js that uses the W3C
     screenshots/
     logs/
     *.log
+
+    package-lock.json
     ```
 
 <br/>
 
 ## **Page Objects**
-The following is an example page object:
+The following is an example of a simple page object:
 ```t
 module.exports = {
+
     url: function () {
         return `${this.api.launch_url}/default.aspx`
     },
+    
     elements: {
-        findBy: "#GridView1_firstSelect_0",
-        inputTextBox: "#GridView1_TextEntryFilterControlInputBox_0",
-        searchButton: "#GridView1_filterButton",
-        pageHeader:"#ctl00_lblPageHeader",
-    },
-    sections: {
-        ticd: {
-            selector: "#containerRight",
-            elements: {
-                hireRehireEmployeeLink: "#wizard_329",
-                addUSCAInternationalEmployeeLink: "#wizard_3011"
-            }
-        }
+        logo: 'section .logo__icon',
+        searchResults: '.mainline',
+        searchBar: {
+            selector: 'input[type=search]'
+        },        
+        submitButton: {
+            selector: "//button[@type='submit']",
+            locateStrategy: 'xpath'
+        },
     }
 }
 
@@ -104,28 +104,28 @@ module.exports = {
 
 <br/>
 
-## **Testing**
+## **Test Execution**
 To run a single test: 
-* `npx nightwatch folder-name/file-name.js`
-* `npx nightwatch --tag tag-name`
-* `npm test --tag tag-name`
-
-or
 * `nightwatch --tag tag-name`
 * `nightwatch folder-name/file-name.js`
+* `npm test --tag tag-name`
 
-    > 💡 This command works if you install nightwatch globally (preferred):<br/>
-    >    `npm install nightwatch -g`
+or (if Nightwatch is not installed globally)
+* `npx nightwatch folder-name/file-name.js`
+* `npx nightwatch --tag tag-name`
 
-<br/><br/>
+To run only the group:
+* `nightwatch --group smoke`
+
+</br></br>
 
 # **Notes**
 
 # *package.json*
 
-### **scripts**
-* Scripts can be executed by running `npm run`
-```json
+### **Scripts**
+* The `npm run` command lets you define custom scripts in your package.json
+```js
 Example:
 "scripts": {
     "test": "nightwatch",
@@ -137,12 +137,14 @@ Example:
 
 
 <br/>
+
 ### **packages/dependencies**
 * Run `npm outdated` command to see if any installed packages are outdated or not. 
   > If you don't see any output in console, it means the packages are not outdated
 * When you make changes in this file, you must run npm install command
 
 <br/>
+
 ### **keywords**
 The keywords field is where you can describe your project using related keywords.<br/>
 An example: `"keywords": ["nightwatch", "test", "smoke"],`
@@ -171,11 +173,11 @@ An example: `"keywords": ["nightwatch", "test", "smoke"],`
     But you can also specify `url` in page classes
     ```
     module.exports = {
-    url: 'https://www.ukg.com/',
-    
-    elements: {
-        ...
-    }
+        url: 'https://www.ukg.com/',
+        
+        elements: {
+            ...
+        }
     };
     ```
     Sample of usage:
@@ -208,9 +210,10 @@ test_settings: {
       },
     ...
 ```
+Sample of usage:
+> login(`browser.globals.`username, `browser.globals.`password)
 
-
-<br/>
+<br/><br/>
 
 # Optional / Additional Features
 
@@ -298,9 +301,9 @@ Dotenv is a module that loads environment variables from a .env file.
 ➡️  Create a .env file in the root of your project
 ```
 (sample)
-BASE_URL            = https://www.baseurl.com/
+BASE_URL            = https://www.saucedemo.com/
 USERNAME            = standard_user
-PASSWORD            = secret
+PASSWORD            = secret_sauce
 ```
 
 Sample of usage:

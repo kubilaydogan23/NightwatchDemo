@@ -1,6 +1,6 @@
 module.exports = {
 
-    "@tags": ["ecosiaz"],
+    "@tags": ["ecosia"],
 
     'Demo test for search functionality': function (browser) {
 

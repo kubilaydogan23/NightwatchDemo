@@ -12,5 +12,4 @@ screenshots/
 logs/
 *.log
 
-
 package-lock.json

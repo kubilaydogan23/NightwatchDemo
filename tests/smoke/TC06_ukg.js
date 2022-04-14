@@ -1,10 +1,17 @@
 module.exports = {
     "@tags": ["ukg", "smoke"],
 
+    beforeEach: () => {
+        browser.url('https://www.ukg.com/')
+    },
+
+    afterEach: function (browser) {
+        browser.end();
+    },
+
     'Testing UKG.com': function (browser) {
 
         browser
-            .url('https://www.ukg.com/')
             .waitForElementVisible('img[alt="Welcome to UKG"]', 'UKG logo is visible')
             .waitForElementVisible('#edit-keys', 5000)
             .assert.titleContains('UKG')
@@ -15,12 +22,9 @@ module.exports = {
             // only 1 expect can be used in one chain
             // .expect.element('.menu-level-1:first-child').to.be.present;
 
-
         browser.getAttribute(".search-container input", "placeholder", function (result) {
             this.assert.equal(result.value, "Enter your search terms");
         });
-
-        browser.end();
     },
 
     'Testing by using page objects': function (browser) {
@@ -36,8 +40,6 @@ module.exports = {
             .waitForElementVisible("@pageHeader", 5000)
             .expect.element("@pageHeader")
             .text.to.equal("Contact UKG");
-
-        browser.end();
     }
     
 }

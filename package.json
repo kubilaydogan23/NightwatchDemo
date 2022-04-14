@@ -5,16 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "nightwatch",
-    "single": "nightwatch --tag ecosia",
+    "single": "nightwatch --tag ecosia --reporter html-reporter.js",
     "pretest": "rimraf dist logs screenshots tests_output",
-    "clean": "rimraf dist logs screenshots tests_output",
-    "generateReport": "allure generate ./allure-results --clean && allure open",
-    "test2": "nightwatch --reporter html-reporter.js"
+    "clean": "rimraf dist logs screenshots tests_output allure-report allure-results",
+    "generateReport": "allure generate ./allure-results --clean && allure open"
   },
   "keywords": [
     "nightwatch",
     "test",
-    "smoke"
+    "demo"
   ],
   "author": "",
   "license": "ISC",
