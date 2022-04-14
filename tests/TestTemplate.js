@@ -10,14 +10,10 @@ module.exports = {
     },
 
     "First Test": function (browser) {
-
         // code
-
     },
 
     "Second Test": function (browser) {
-
         // code
-
     }
 };
