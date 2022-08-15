@@ -1,11 +1,11 @@
 module.exports = {
 
-    "@tags": ["ecosia"],
+    "@tags": ["ecosia01"],
 
     'Demo test for search functionality': function (browser) {
 
         browser.url('https://www.ecosia.org/')
-            .waitForElementVisible('section .logo__icon')
+            .waitForElementVisible('section .logo__icon', 15000)
             .assert.titleContains('Ecosia')
             .assert.titleEquals('Ecosia - the search engine that plants trees')
             .assert.visible('input[type=search]')
